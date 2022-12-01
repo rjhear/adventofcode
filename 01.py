@@ -31,7 +31,7 @@ def sum_top_n_max_cals(elf_calories: dict, n: int = 3) -> int:
 
 
 if __name__ == "__main__":
-    puzzle_input = r"./01_input.txt"
+    puzzle_input = r"./data/01_input.txt"
     main(puzzle_input)
 
 # os.linesep
