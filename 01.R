@@ -43,10 +43,10 @@ get_max_cals <- function(total_calories) {
   return (max(unlist(total_calories)))
 }
 
-sum_top_n_max_cals <- function(total_calories) {
+sum_top_n_max_cals <- function(total_calories, n = 3) {
   total_calories <- sort.int(total_calories)
   return(sum(total_calories[seq.int(to = length(total_calories),
-                                    length.out = 3)]))
+                                    length.out = n)]))
 }
 
 # Driver ------------------------------------------------------------------
