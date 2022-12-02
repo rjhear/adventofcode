@@ -15,7 +15,7 @@ puzzle.input <- "./data/01_input.txt"
 setwd(repo.local)
 
 # Define input and solvers ------------------------------------------------
-break.point <-
+marshal <-
   function(arr, idx) {
     unname(split(arr, cumsum(seq_along(arr) %in% idx)))
   }
@@ -27,7 +27,7 @@ sum.cals <- function(cal) {
 get.cal.totals <- function(filepath, n = 3) {
   calories <- readLines(filepath)
   return (calories |>
-            break.point(which(calories == "")) |>
+            marshal(which(calories == "")) |>
             lapply(sum.cals) |>
             unlist() |>
             sort() |>
