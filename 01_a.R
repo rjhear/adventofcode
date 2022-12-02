@@ -2,9 +2,9 @@
 #' Day 1: Calorie Counting
 #' https://adventofcode.com/2022/day/1
 #'
-#'  ========= SOLUTIONS ==========
-#' + PART 1 .......65,912 calories
-#' + PART 2 ......195,625 calories
+#' ========= SOLUTIONS ==========
+#' + PART 1 ......65,912 calories
+#' + PART 2 .....195,625 calories
 
 packages <- c("tidyverse")
 lapply(packages, require, character.only = T)

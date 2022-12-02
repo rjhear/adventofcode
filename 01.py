@@ -2,18 +2,18 @@
 Day 1: Calorie Counting
 https://adventofcode.com/2022/day/1
 
- ========= SOLUTIONS ==========
-+ PART 1 .......65,912 calories
-+ PART 2 ......195,625 calories
+========= SOLUTIONS ==========
++ PART 1 ......65,912 calories
++ PART 2 .....195,625 calories
 """
 from itertools import groupby
 from pathlib import Path
 
 
 def main(calories: str = None) -> None:
-    print(f""" {f" SOLUTIONS ":=^30}""")
-    print(f"""+ PART 1 {get_max_cals(elf_cals := get_elf_cal_totals(calories)):.>13,} calories""")
-    print(f"""+ PART 2 {sum_top_n_max_cals(elf_cals):.>13,} calories""")
+    print(f"""{f" SOLUTIONS ":=^30}""")
+    print(f"""+ PART 1 {get_max_cals(elf_cals := get_elf_cal_totals(calories)):.>12,} calories""")
+    print(f"""+ PART 2 {sum_top_n_max_cals(elf_cals):.>12,} calories""")
 
 
 def get_elf_cal_totals(filepath: str) -> dict:
