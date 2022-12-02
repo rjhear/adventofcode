@@ -42,7 +42,7 @@ get.max.cals <- function(total_calories) {
   return (max(unlist(total_calories)))
 }
 
-sum.top.n.max.cols <- function(total_calories, n = 3) {
+sum.top.n.max.cals <- function(total_calories, n = 3) {
   total_calories <- sort.int(total_calories)
   return(sum(total_calories[seq.int(to = length(total_calories),
                                     length.out = n)]))
@@ -51,4 +51,4 @@ sum.top.n.max.cols <- function(total_calories, n = 3) {
 # Driver ------------------------------------------------------------------
 calories <- get.cal.totals(puzzle.input)
 print(get.max.cals(calories))
-print(sum.top.n.max.cols(calories))
+print(sum.top.n.max.cals(calories))
