@@ -35,8 +35,7 @@ get.cal.totals <- function(filepath) {
     lapply(calories, function(x) {
       as.numeric(strsplit(x, split = " ")[[1]])
     })
-  calories <- sapply(calories, sum)
-  return (calories)
+  return (sapply(calories, sum))
 }
 
 get.max.cals <- function(total_calories) {
