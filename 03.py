@@ -7,7 +7,7 @@ https://adventofcode.com/2022/day/2
 from pathlib import Path
 
 
-def main():
+def main() -> None:
     ...
 
 

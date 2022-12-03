@@ -14,35 +14,39 @@ LOSE_1 = {"X": "Scissors", "Y": "Rock", "Z": "Paper"}
 LOSE_2 = {"A": "Scissors", "B": "Rock", "C": "Paper"}
 
 
-def main(game_moves):
-    rounds = _get_inputs(game_moves)
+def main(game_moves: str) -> None:
     print(f"""{f" SOLUTIONS ":=^30}""")
-    print(f"""+ PART 1: {run_part_1(rounds):.>12,} points""")
-    print(f"""+ PART 2: {run_part_2(rounds):.>12,} points""")
+    print(f"""+ PART 1: {run_part_1(game_moves):.>12,} points""")
+    print(f"""+ PART 2: {run_part_2(game_moves):.>12,} points""")
 
 
 def _get_inputs(game_inputs: str) -> list:
+    """"""
     return [tuple(move.split()) for move in Path(game_inputs).read_text().splitlines()]
 
 
-def lookup_game_vals(term):
+def lookup_game_vals(term: int | str) -> int:
+    """"""
     game_vals = {("Rock", "A", "X", 1): 1, ("Paper", "B", "Y", 2): 2, ("Scissors", "C", "Z", 3): 3}
     for lookup in game_vals:
         if term in lookup:
             return game_vals.get(lookup)
 
 
-def get_outcome_val(opp_shape, you_shape):
+def get_outcome_val(opp_shape: str, you_shape: str) -> int:
+    """"""
     rules = {"Rock": "Paper", "Paper": "Scissors", "Scissors": "Rock"}
     if you_shape == opp_shape:
-        return 3
+        return 3 # Draw
     elif rules.get(you_shape) == opp_shape:
-        return 0
+        return 0 # Lose
     else:
-        return 6
+        return 6 # Win
 
 
-def run_part_1(rounds):
+def run_part_1(game_moves: str) -> int:
+    """"""
+    rounds = _get_inputs(game_moves)
     opponent, you = 0, 1
     your_total_score_1 = 0
     for round in rounds:
@@ -52,7 +56,9 @@ def run_part_1(rounds):
     return your_total_score_1
 
 
-def run_part_2(rounds):
+def run_part_2(game_moves: str) -> int:
+    """"""
+    rounds = _get_inputs(game_moves)
     opponent, ending = 0, 1
     your_total_score_2 = 0
     for round in rounds:
