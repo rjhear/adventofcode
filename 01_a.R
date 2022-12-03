@@ -5,14 +5,11 @@
 #' ========= SOLUTIONS ==========
 #' + PART 1 ......65,912 calories
 #' + PART 2 .....195,625 calories
-
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 packages <- c("tidyverse")
 lapply(packages, require, character.only = T)
 
-repo.local <- "~/repos/_misc/adventofcode"
 puzzle.input <- "./data/01_input.txt"
-
-setwd(repo.local)
 
 # Define input and solvers ------------------------------------------------
 get.cal.totals <- function(filepath) {
