@@ -8,15 +8,13 @@ https://adventofcode.com/2022/day/2
 """
 from functools import reduce
 from operator import and_
-from pathlib import Path
 from typing import Generator
+
+from utils.helpers import _get_inputs, print_solutions
 
 
 def main(game_input: str) -> None:
     print_solutions(game_input=game_input, part_1=run_part_1, part_2=run_part_2)
-
-
-def _get_inputs(game_input: str) -> list: return Path(game_input).read_text().splitlines()
 
 
 def find_common_in_rucksack(items: str) -> set:
@@ -46,18 +44,6 @@ def run_part_2(game_input: str, grouping: int = 3) -> int:
     grouped = (rucksacks[n:n + grouping] for n in range(0, len(rucksacks), grouping))
     common: Generator = find_common_among_rucksacks(grouped)
     return sum(map(get_priority, common))
-
-
-def print_solutions(*, game_input: str, part_1: callable = None, part_2: callable = None) -> None:
-    """"""
-    if not any((part_1, part_2)): raise ValueError("At least one function must be provided")
-    print(f"""{f" SOLUTIONS ":=^35}""")
-    if all((part_1, part_2)):
-        for i, solution in enumerate((part_1, part_2), 1):
-            print(f"""+ PART {i}: {solution(game_input):.>12,} priority sum""")
-    else:
-        i, solution = 1 if part_1 else 2, part_1 or part_2
-        print(f"""+ PART {i}: {solution(game_input):.>12,} priority sum""")
 
 
 if __name__ == "__main__":
