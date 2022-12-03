@@ -7,7 +7,7 @@
 # + PART 1 ......65,912 calories
 # + PART 2 .....195,625 calories
 
-read_lines() {
+count_calories() {
   declare -a arr
   while IFS= read -r line; do
     [[ -z "$line" ]] && arr+=($sum) && sum=0 && continue && sum=0 || sum=$((sum + line))
@@ -21,4 +21,4 @@ read_lines() {
   )"
 }
 
-read_lines "./data/01_input.txt"
+count_calories "./data/01_input.txt"
