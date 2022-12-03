@@ -26,7 +26,7 @@ def find_common_in_rucksack(string: str) -> set:
     return set(string[:(split := len(string) >> 1)]) & set(string[split:])
 
 
-def find_common_in_rucksacks(rucksacks: list) -> Generator:
+def find_common_among_rucksacks(rucksacks: list) -> Generator:
     """"""
     return ((reduce(and_, map(set, group))) for group in rucksacks)
 
@@ -44,7 +44,7 @@ def run_part_1(game_input: str) -> int:
 def run_part_2(game_input: str, grouping: int = 3) -> int:
     rucksacks = _get_inputs(game_input)
     grouped = [rucksacks[n:n + grouping] for n in range(0, len(rucksacks), grouping)]
-    common = find_common_in_rucksacks(grouped)
+    common = find_common_among_rucksacks(grouped)
     return sum(get_priority(badge) for badge in common)
 
 
