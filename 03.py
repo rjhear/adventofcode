@@ -12,13 +12,13 @@ from pathlib import Path
 from typing import Generator
 
 
-def main(game_input) -> None:
+def main(game_input: str) -> None:
     print(f"""{f" SOLUTIONS ":=^35}""")
     print(f"""+ PART 1: {run_part_1(game_input):.>12,} priority sum""")
     print(f"""+ PART 2: {run_part_2(game_input):.>12,} priority sum""")
 
 
-def _get_inputs(game_inputs) -> list: return Path(game_inputs).read_text().splitlines()
+def _get_inputs(game_inputs: str) -> list: return Path(game_inputs).read_text().splitlines()
 
 
 def find_common_in_rucksack(items: str) -> set:
