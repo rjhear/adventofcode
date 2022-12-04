@@ -10,7 +10,7 @@ def _get_inputs(game_input: str) -> list: return Path(game_input).read_text().sp
 def print_solutions(*, game_input: str, part_1: callable = None, part_2: callable = None, descrip: str = "") -> None:
     """"""
     if not any((part_1, part_2)): raise ValueError("At least one function must be provided")
-    print((header := f"""{f" SOLUTIONS ":=^35}"""))
+    print((header := f"""{f" SOLUTIONS ":=^42}"""))
     if all((part_1, part_2)):
         for i, solution in enumerate((part_1, part_2), 1):
             message = f"""+ PART {i}: {solution(game_input):.>12,}"""
@@ -29,9 +29,11 @@ def performance_timer(func):
         start = perf_counter_ns()
         result = func(*args, **kwargs)
         stop = perf_counter_ns()
-        print(f"\nSTART: {begin:.>35}")
+        print(f"\n{' PERFORMANCE ':=^42}")
+        print(f"+ FUNCTION: {func.__name__!r} used")
+        print(f"""{ f' {str((stop - start) / 1_000_000_000)}':>>34} SECONDS""")
+        print(f"START: {begin:.>35}")
         print(f"STOP: {datetime.now().strftime('%Y-%m-%d %H:%M:%S:%f'):.>36}")
-        print(f"""+ {func.__name__!r} took {(stop - start) / 1_000_000_000:.>20} SECONDS""")
         return result
 
     return wrapper
