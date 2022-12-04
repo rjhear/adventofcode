@@ -1,7 +1,6 @@
+from datetime import datetime
 from pathlib import Path
 from time import perf_counter_ns
-
-from datetime import datetime
 
 
 def _get_inputs(game_input: str) -> list: return Path(game_input).read_text().splitlines()
