@@ -10,9 +10,10 @@ from functools import reduce
 from operator import and_
 from typing import Generator
 
-from utils.helpers import _get_inputs, print_solutions
+from utils.helpers import _get_inputs, performance_timer, print_solutions
 
 
+@performance_timer
 def main(game_input: str) -> None:
     print_solutions(game_input=game_input, part_1=run_part_1, part_2=run_part_2)
 
