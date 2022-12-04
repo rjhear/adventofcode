@@ -1,6 +1,6 @@
 """03.py
 Day 3: Rucksack Reorganization
-https://adventofcode.com/2022/day/2
+https://adventofcode.com/2022/day/3
 
 ============ SOLUTIONS ============
 + PART 1: .......7,917 priority sum
