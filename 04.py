@@ -21,7 +21,7 @@ def main(game_input: str) -> None:
 def find_assignment_overlaps(game_input: str, fully_contains: bool = True) -> int:
     """"""
     overlaps = 0
-    pairs = (chain(*(pair.splitlines() for pair in _get_inputs(game_input))))
+    pairs = chain(*(pair.splitlines() for pair in _get_inputs(game_input)))
     for assignment in pairs:
         check_overlap = (check_is_overlap, check_is_super_or_sub_set)[fully_contains]
         overlap = check_overlap(*(tuple(map(int, elf.split("-"))) for elf in assignment.split(",")))
@@ -40,7 +40,7 @@ def check_is_overlap(range1: list, range2: list) -> bool:
     """"""
     start, stop = 0, -1
     r1_range, r2_range = starmap(range, ((range1[start], range1[stop] + 1), (range2[start], range2[stop] + 1)))
-    return bool(list(range(max(r1_range[0], r2_range[0]), min(r1_range[-1], r2_range[-1]) + 1)))
+    return bool(list(range(max(r1_range[start], r2_range[start]), min(r1_range[stop], r2_range[stop]) + 1)))
 
 
 if __name__ == "__main__":
