@@ -23,20 +23,20 @@ def find_assignment_overlaps(game_input: str, fully_contains: bool = True) -> in
     overlaps = 0
     pairs = chain(*(pair.splitlines() for pair in _get_inputs(game_input)))
     for assignment in pairs:
-        check_overlap = (check_is_overlap, check_is_super_or_sub_set)[fully_contains]
+        check_overlap = (is_intersecting, is_super_or_sub_set)[fully_contains]
         overlap = check_overlap(*(tuple(map(int, elf.split("-"))) for elf in assignment.split(",")))
         if overlap: overlaps += 1
     return overlaps
 
 
-def check_is_super_or_sub_set(range1: list, range2: list) -> bool:
+def is_super_or_sub_set(range1: list, range2: list) -> bool:
     """"""
     start, stop = 0, 1
     r1_range, r2_range = starmap(range, ((range1[start], range1[stop] + 1), (range2[start], range2[stop] + 1)))
     return set(r1_range).issubset(r2_range) or set(r1_range).issuperset(r2_range)
 
 
-def check_is_overlap(range1: list, range2: list) -> bool:
+def is_intersecting(range1: list, range2: list) -> bool:
     """"""
     start, stop = 0, -1
     r1_range, r2_range = starmap(range, ((range1[start], range1[stop] + 1), (range2[start], range2[stop] + 1)))
