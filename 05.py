@@ -21,7 +21,7 @@ def _process_input(game_input: str) -> tuple:
     info = _get_inputs(game_input)
     stacks, moves = info[:(cut_off := info.index(""))], info[cut_off + 1:]
     stacks.pop(-1)
-    stacks = [reversed(j) for parts in zip(*stacks) if (j := [part for part in parts if part.isalpha()])]
+    stacks = [j[::-1] for parts in zip(*stacks) if (j := [part for part in parts if part.isalpha()])]
     moves = ((int(i) for i in move.split() if i.isdigit()) for move in list(moves))
     return stacks, moves
 
@@ -43,10 +43,9 @@ def run_part_2(game_input: str) -> str:
     gameboard = dict(enumerate(map(deque, stacks), 1))
     for move in moves:
         quantity, beg, end = tuple(move)
-        val_store = [gameboard.get(beg).pop() for _ in range(quantity)]
-        while list(reversed(val_store)):
-            crate = val_store.pop()
-            gameboard.get(end).append(crate)
+        crane = [gameboard.get(beg).pop() for _ in range(quantity)]
+        while crane:
+            gameboard.get(end).append(crane.pop())
     return "".join(stack.pop() for stack in gameboard.values())
 
 
