@@ -38,8 +38,7 @@ def run_part_2(game_input: str) -> str:
 def _process_input(game_input: str) -> tuple:
     """"""
     info = _get_inputs(game_input)
-    stacks, moves = info[:(cut_off := info.index(""))], info[cut_off + 1:]
-    stacks.pop(-1)
+    stacks, moves = info[:(cut_off := info.index("")) - 1], info[cut_off + 1:]
     stacks = [j[::-1] for parts in zip(*stacks) if (j := [part for part in parts if part.isalpha()])]
     moves = ((int(i) for i in move.split() if i.isdigit()) for move in list(moves))
     gameboard = dict(enumerate(map(deque, stacks), 1))
