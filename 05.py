@@ -21,8 +21,7 @@ def run_part_1(game_input: str) -> str:
     stacks, moves, gameboard = _process_input(game_input)
     for move in moves:
         quantity, beg, end = tuple(move)
-        for _ in range(quantity):
-            gameboard.get(end).append(gameboard.get(beg).pop())
+        (gameboard.get(end).append(gameboard.get(beg).pop()) for _ in range(quantity))
     return "".join(stack.pop() for stack in gameboard.values())
 
 
