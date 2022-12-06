@@ -20,7 +20,7 @@ def run_part_1(game_input: str) -> str:
     """"""
     moves, gameboard = _process_input(game_input)
     for move in moves:
-        quantity, beg, end = tuple(move)
+        quantity, beg, end = move
         (gameboard.get(end).append(gameboard.get(beg).pop()) for _ in range(quantity))
     return "".join(stack.pop() for stack in gameboard.values())
 
@@ -29,7 +29,7 @@ def run_part_2(game_input: str) -> str:
     """"""
     moves, gameboard = _process_input(game_input)
     for move in moves:
-        quantity, beg, end = tuple(move)
+        quantity, beg, end = move
         crane = [gameboard.get(beg).pop() for _ in range(quantity)]
         while crane: gameboard.get(end).append(crane.pop())
     return "".join(stack.pop() for stack in gameboard.values())
