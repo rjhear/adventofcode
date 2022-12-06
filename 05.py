@@ -16,20 +16,9 @@ def main(game_input: str) -> None:
     print_solutions(game_input=game_input, part_1=run_part_1, part_2=run_part_2)
 
 
-def _process_input(game_input: str) -> tuple:
-    """"""
-    info = _get_inputs(game_input)
-    stacks, moves = info[:(cut_off := info.index(""))], info[cut_off + 1:]
-    stacks.pop(-1)
-    stacks = [j[::-1] for parts in zip(*stacks) if (j := [part for part in parts if part.isalpha()])]
-    moves = ((int(i) for i in move.split() if i.isdigit()) for move in list(moves))
-    return stacks, moves
-
-
 def run_part_1(game_input: str) -> str:
     """"""
-    stacks, moves = _process_input(game_input)
-    gameboard = dict(enumerate(map(deque, stacks), 1))
+    stacks, moves, gameboard = _process_input(game_input)
     for move in moves:
         quantity, beg, end = tuple(move)
         for _ in range(quantity):
@@ -39,14 +28,24 @@ def run_part_1(game_input: str) -> str:
 
 def run_part_2(game_input: str) -> str:
     """"""
-    stacks, moves = _process_input(game_input)
-    gameboard = dict(enumerate(map(deque, stacks), 1))
+    stacks, moves, gameboard = _process_input(game_input)
     for move in moves:
         quantity, beg, end = tuple(move)
         crane = [gameboard.get(beg).pop() for _ in range(quantity)]
         while crane:
             gameboard.get(end).append(crane.pop())
     return "".join(stack.pop() for stack in gameboard.values())
+
+
+def _process_input(game_input: str) -> tuple:
+    """"""
+    info = _get_inputs(game_input)
+    stacks, moves = info[:(cut_off := info.index(""))], info[cut_off + 1:]
+    stacks.pop(-1)
+    stacks = [j[::-1] for parts in zip(*stacks) if (j := [part for part in parts if part.isalpha()])]
+    moves = ((int(i) for i in move.split() if i.isdigit()) for move in list(moves))
+    gameboard = dict(enumerate(map(deque, stacks), 1))
+    return stacks, moves, gameboard
 
 
 if __name__ == "__main__":
