@@ -19,9 +19,9 @@ def main(game_input: str) -> None:
 
 def find_signal(game_input: str, base_len: int = 4) -> int:
     packets: str = _get_inputs(game_input)[0]
-    collector = ""
-    if len(set(packets[:(base_len)])) == base_len:
+    if is_all_unique(packets[:base_len]):
         return base_len
+    collector = ""
     collector += packets[:base_len]
     for idx, marker in enumerate(packets):
         collector += packets[base_len + idx]
