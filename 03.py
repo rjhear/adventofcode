@@ -42,7 +42,7 @@ def run_part_1(game_input: str) -> int:
 def run_part_2(game_input: str, grouping: int = 3) -> int:
     """"""
     rucksacks: list = _get_inputs(game_input)
-    grouped = (rucksacks[n:n + grouping] for n in range(0, len(rucksacks), grouping))
+    grouped: Generator = (rucksacks[n:n + grouping] for n in range(0, len(rucksacks), grouping))
     common: Generator = find_common_among_rucksacks(grouped)
     return sum(map(get_priority, common))
 
