@@ -8,13 +8,14 @@ https://adventofcode.com/2022/day/4
 """
 from functools import partial
 from itertools import chain, starmap
+from typing import Callable
 
 from utils.helpers import _get_inputs, performance_timer, print_solutions
 
 
 @performance_timer
 def main(game_input: str) -> None:
-    part_2 = partial(find_assignment_overlaps, fully_contains=False)
+    part_2: Callable = partial(find_assignment_overlaps, fully_contains=False)
     print_solutions(game_input=game_input, part_1=find_assignment_overlaps, part_2=part_2)
 
 
