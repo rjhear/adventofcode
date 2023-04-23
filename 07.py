@@ -14,7 +14,7 @@ from utils.helpers import _get_inputs, performance_timer, print_solutions
 
 @performance_timer
 def main(game_input: str) -> None:
-    print_solutions(game_input=game_input, part_1=_part_1, part_2=__part_2)
+    print_solutions(game_input=game_input, part_1=_part_1, part_2=_part_2)
 
 
 def parse_commands(game_input: str) -> Counter:
@@ -47,7 +47,7 @@ def _part_1(game_input: str, less_than: int = 100_000) -> int:
     return sum(size for size in sizes if size <= less_than)
 
 
-def __part_2(game_input: str) -> int:
+def _part_2(game_input: str) -> int:
     """Given a new line-delimited text file, parse into Counter of paths and sizes.
     Return the minimum size of a file that can be deleted to free up space.
 
